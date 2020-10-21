@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Jogo da Forca</string>
+    <string name="tv1">Palavra</string>
+    <string name="tv2">Chances</string>
+    <string name="hint1">Exemplo: hospital</string>
+    <string name="hint2">Número de tentativas</string>
+    <string name="btn1">Começar</string>
+    <string name="numTentativas">Tentativas Restantes:</string>
+    <string name="letra">Tentar letra</string>
+    <string name="palavra">Tentar palavra</string>
+    <string name="enviar">enviar</string>
+    <string name="suasTentativas">Letras e palavras tentadas</string>
+</resources>
