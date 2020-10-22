@@ -11,4 +11,5 @@
     <string name="enviar">enviar</string>
     <string name="suasTentativas">Letras e palavras tentadas:</string>
     <string name="vazio"></string>
+    <string name="titleDescription">Título do Jogo</string>
 </resources>
