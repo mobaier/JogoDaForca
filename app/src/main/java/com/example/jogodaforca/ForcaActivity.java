@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
 public class ForcaActivity extends AppCompatActivity {
 
@@ -20,9 +21,21 @@ public class ForcaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forca);
     }
 
-    // Ir para a activity do Jogo
+    // Botão para iniciar o jogo e enviar os dados
+    // de configuração
     public void onClickStartGame(View view) {
+        // Pegar os valores dos EditTexts
+        EditText editTextMisterio = findViewById(R.id.misterio);
+        EditText editTextChances = findViewById(R.id.chances);
+
+        // Atribuí-los a variáveis para envio
+        String misterio = editTextMisterio.getText().toString();
+        String chances = editTextChances.getText().toString();
+
+        // Configurar intenção para enviar os dados
         Intent intent = new Intent(this, JogoActivity.class);
+        intent.putExtra("Chances", chances);
+        intent.putExtra("Misterio", misterio);
         startActivity(intent);
     }
 }

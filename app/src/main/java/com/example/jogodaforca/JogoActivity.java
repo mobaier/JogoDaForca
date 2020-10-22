@@ -6,47 +6,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class JogoActivity extends AppCompatActivity {
 
-    // As letras e palavras tentadas são armazenadas
-    // Em uma ArrayList de Strings
-    ArrayList<String> arr = new ArrayList<>();
-    String palavraMisteriosa = "araraasdfasdfasdffsd";
-    int chances = 5;
+    ArrayList<String> arr = new ArrayList<>(); // Para armazenar as letras e palavras tentadas
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo);
-        // Pegar valores da outra atividade
-        TextView textViewRestante = findViewById(R.id.restante);
-        TextView textViewMisterio = findViewById(R.id.palavraMisteriosa);
+        // Pegar variáveis da outra atividade
         Bundle bundle = getIntent().getExtras();
-        String chances = bundle.getString("Chances");
-        String misterio = bundle.getString("Misterio");
-        String incognito = "";
-
-        // Esconder as letras da palavra
-        for(int i=0; i<misterio.length(); i++) {
-            incognito += "_ ";
-        }
-
-        textViewRestante.setText(chances);
-        textViewMisterio.setText(incognito);
+        TextView textView = findViewById(R.id.restante);
+        assert bundle != null;
+        String restante = bundle.getString("Chances");
+        textView.setText(restante);
+        TextView textView2 = findViewById(R.id.palavraMisteriosa);
+        String palavra = bundle.getString("Misterio");
+        textView2.setText(palavra);
     }
 
     // Adicionar as letras inseridas a uma lista de tentativas
     // e imprimir item a item em seguida
     public void onClickEnviarLetra(View view) {
-        // Ver se a letra existe
-        // TODO
-        for(int i=0; i<palavraMisteriosa.length(); i++) {
-
-        }
-
         // Adicionar a letra a lista de tentativas
         EditText editText = findViewById(R.id.editTextLetra);
         TextView textView = findViewById(R.id.palavras);
@@ -64,6 +50,10 @@ public class JogoActivity extends AppCompatActivity {
     public void onClickEnviarPalavra(View view) {
         EditText editText = findViewById(R.id.editTextPalavra);
         TextView textView = findViewById(R.id.palavras);
+        TextView textView1 = findViewById(R.id.palavraMisteriosa);
+        TextView textView2 = findViewById(R.id.restante);
+        int restante = Integer.parseInt(textView2.getText().toString());
+        String resposta = textView1.getText().toString();
         String palavra = editText.getText().toString();
         arr.add(palavra);
         String adv = "";
@@ -71,5 +61,15 @@ public class JogoActivity extends AppCompatActivity {
             adv += arr.get(i) + " ";
         }
         textView.setText(adv);
+
+        if(palavra.equals(resposta)) {
+            CharSequence texto = "Parabéns, Você Acertou!";
+            int duracao = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, texto, duracao);
+            toast.show();
+        } else {
+            restante--;
+            textView2.setText(Integer.toString(restante));
+        }
     }
 }
