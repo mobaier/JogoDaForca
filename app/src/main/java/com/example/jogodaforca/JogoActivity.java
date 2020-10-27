@@ -74,10 +74,19 @@ public class JogoActivity extends AppCompatActivity {
                 }
             }
 
+            CharSequence texto = "Essa letra está na palavra!";
+            int duracao = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, texto, duracao);
+            toast.show();
+
             textView3.setText(substituto);
 
         } else {
             restante--;
+            CharSequence texto = "Essa letra não aparece na palavra!";
+            int duracao = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, texto, duracao);
+            toast.show();
             textView2.setText(Integer.toString(restante));
         }
 
@@ -121,7 +130,11 @@ public class JogoActivity extends AppCompatActivity {
             toast.show();
             finish();
         } else {
-            restante = 0;
+            restante--;
+            CharSequence texto = "Palavra incorreta, tente novamente!";
+            int duracao = Toast.LENGTH_LONG;
+            Toast toast = Toast.makeText(this, texto, duracao);
+            toast.show();
             textView2.setText(Integer.toString(restante));
         }
 
