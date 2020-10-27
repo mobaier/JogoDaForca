@@ -14,7 +14,6 @@ public class JogoActivity extends AppCompatActivity {
 
     ArrayList<String> arr = new ArrayList<>(); // Para armazenar as letras e palavras tentadas
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +68,7 @@ public class JogoActivity extends AppCompatActivity {
         if(palavra.contains(letra)) {
             for(int i=0; i<palavra.length(); i++) {
                 if(letra.equals(Character.toString(palavra.charAt(i)))) {
-                    substituto += letra + " ";
+                    substituto += palavra.charAt(i) + " ";
                 } else {
                     substituto += "_ ";
                 }
@@ -122,7 +121,7 @@ public class JogoActivity extends AppCompatActivity {
             toast.show();
             finish();
         } else {
-            restante--;
+            restante = 0;
             textView2.setText(Integer.toString(restante));
         }
 
